@@ -1,10 +1,11 @@
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='grc.io/taaron-1/tanzu-java-web-app-source')
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='gcr.io/taaron-1/tanzu-java-web-app-source')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
 k8s_custom_deploy(
     'tanzu-java-web-app',
     apply_cmd="tanzu apps workload apply -f config/workload.yaml --live-update" +
+               " --label apps.tanzu.vmware.com/workload-type=web-dev" +
                " --local-path " + LOCAL_PATH +
                " --source-image " + SOURCE_IMAGE +
                " --namespace " + NAMESPACE +
@@ -20,3 +21,4 @@ k8s_custom_deploy(
 
 k8s_resource('tanzu-java-web-app', port_forwards=["8080:8080"],
             extra_pod_selectors=[{'serving.knative.dev/service': 'tanzu-java-web-app'}])
+allow_k8s_contexts('gke_taaron-1_us-west1-b_tap-ga1')
