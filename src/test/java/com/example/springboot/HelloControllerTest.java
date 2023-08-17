@@ -26,6 +26,6 @@ class HelloControllerTest {
         mockMvc
             .perform(get("/"))
             .andExpect(status().isOk())
-            .andExpect(content().string("Greetings from TAP + Explore!"));
+            .andExpect(content().string("Greetings from TAP + Demo!"));
     }
 }
