@@ -11,4 +11,15 @@ public class HelloController {
 		return "Hello from TAP!";
 	}
 
+	@Configuration
+	@EnableContextInstanceData
+	public static class ApplicationConfiguration {
+		@Value("${hostname:N/A}")
+		private String hostname;
+
+		public String hostname(){
+			return hostname;
+		}
+	}
+
 }
