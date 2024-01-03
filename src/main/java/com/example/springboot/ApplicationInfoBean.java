@@ -18,6 +18,6 @@ public class ApplicationInfoBean {
     @Value("${services/domain:N/A}")
     public String serviceDomain;
 
-    @Value("${placement/availability-zone:N/A}")
-    public String availabilityZone;
+    // @Value("${placement/availability-zone:N/A}")
+    // public String availabilityZone;
 }
