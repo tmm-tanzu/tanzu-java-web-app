@@ -8,18 +8,7 @@ public class HelloController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "Hello from TAP!";
+		ApplicationInfoBean app_info = new ApplicationInfoBean();
+		return String.format("Hello from TAP! (%s)", app_info.availabilityZone);
 	}
-
-	@Configuration
-	@EnableContextInstanceData
-	public static class ApplicationConfiguration {
-		@Value("${hostname:N/A}")
-		private String hostname;
-
-		public String hostname(){
-			return hostname;
-		}
-	}
-
 }
