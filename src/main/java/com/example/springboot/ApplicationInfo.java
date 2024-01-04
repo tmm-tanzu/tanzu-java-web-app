@@ -4,20 +4,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
 
 @Component
-public class ApplicationInfoBean {
+public class ApplicationInfo {
 
     @Value("${ami-id:N/A}")
-    private String amiId;
+    public String amiId;
 
     @Value("${hostname:N/A}")
     public String hostname;
 
     @Value("${instance-type:N/A}")
-    private String instanceType;
+    public String instanceType;
 
     @Value("${services/domain:N/A}")
     public String serviceDomain;
 
-    // @Value("${placement/availability-zone:N/A}")
-    // public String availabilityZone;
+    @Value("${placement/availability-zone:N/A}")
+    public String availabilityZone;
+
+    @Value("${mac:N/A}")
+    public String mac;
 }
