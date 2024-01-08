@@ -1,10 +1,11 @@
 package com.example.springboot;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RestController
+@Controller
 public class HelloController {
 
     private final ApplicationInfo cloudMetadata;
@@ -14,13 +15,11 @@ public class HelloController {
     }
 
     @RequestMapping("/")
-    public String index() {
-        return String.format("Availability Zone: %s<br>" +
-			"Hostname: %s<br>" +
-			"Mac: %s<br>" +
-			"",
-			cloudMetadata.availabilityZone,
-			cloudMetadata.hostname,
-			cloudMetadata.mac);
+    public String index(Model model) {
+        model.addAttribute("hostname", cloudMetadata.hostname);
+        model.addAttribute("availabilityZone", cloudMetadata.availabilityZone);
+        model.addAttribute("mac", cloudMetadata.mac);
+
+        return "index";
     }
 }
