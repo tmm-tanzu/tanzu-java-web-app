@@ -1,13 +1,12 @@
 package com.example.springboot;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 public class HealthController {
 
     private volatile boolean health = true;
@@ -20,8 +19,13 @@ public class HealthController {
         return ResponseEntity.internalServerError().build();
     }
 
-    @PostMapping("/health")
-    public void update(@RequestBody boolean health) {
-        this.health = health;
+    @PostMapping("/health/down")
+    public void down() {
+        this.health = false;
+    }
+
+    @PostMapping("/health/up")
+    public void up() {
+        this.health = true;
     }
 }
