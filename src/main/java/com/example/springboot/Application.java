@@ -7,10 +7,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import io.awspring.cloud.autoconfigure.context.ContextCredentialsAutoConfiguration;
+import io.awspring.cloud.autoconfigure.context.ContextInstanceDataAutoConfiguration;
+import io.awspring.cloud.autoconfigure.context.ContextRegionProviderAutoConfiguration;
+import io.awspring.cloud.autoconfigure.context.ContextResourceLoaderAutoConfiguration;
+import io.awspring.cloud.autoconfigure.context.ContextStackAutoConfiguration;
+
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
 import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {ContextCredentialsAutoConfiguration.class, ContextInstanceDataAutoConfiguration.class, ContextRegionProviderAutoConfiguration.class, ContextResourceLoaderAutoConfiguration.class, ContextStackAutoConfiguration.class})
 public class Application {
 
 	public static void main(String[] args) {
