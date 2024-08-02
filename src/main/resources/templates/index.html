@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/styles.css" rel = "stylesheet"/>
+      <title>Tanzu Java Web App</title>
+   </head>
+   <style>
+      table, th, td {
+         border: 1px solid black;
+         border-collapse: collapse;
+      }
+
+      th, td {
+         text-align: left;
+         padding: 7px;
+      }
+   </style>
+   <body>
+      <h2>Welcome to Tanzu Java Web App</h2>
+      
+      <p>This was rendered at <span th:text="${timestamp}"></span></p>
+
+      <table>
+         <tr>
+           <th>AWS Instance Metadata</th>
+           <th>Value</th>
+         </tr>
+         <tr>
+           <td>Availability Zone</td>
+           <td th:text="${availabilityZone}"></td>
+         </tr>
+         <tr>
+            <td>MAC</td>
+            <td th:text="${mac}"></td>
+         </tr>           
+           <td>Hostname</td>
+           <td th:text="${hostname}"></td>
+         </tr>
+       </table>
+   </body>
+</html>

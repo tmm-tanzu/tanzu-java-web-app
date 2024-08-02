@@ -1,14 +1,29 @@
 package com.example.springboot;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import java.time.Instant;
 
-@RestController
+
+@Controller
 public class HelloController {
 
-	@RequestMapping("/")
-	public String index() {
-		return "Hello from TAP 1.10!";
-	}
+    private final ApplicationInfo cloudMetadata;
 
+    public HelloController(ApplicationInfo cloudMetadata) {
+        this.cloudMetadata = cloudMetadata;
+    }
+
+    @RequestMapping("/")
+    public String index(Model model) {
+        model.addAttribute("hostname", cloudMetadata.hostname);
+        model.addAttribute("availabilityZone", cloudMetadata.availabilityZone);
+        model.addAttribute("mac", cloudMetadata.mac);
+
+        Instant timestamp = Instant.now();
+        model.addAttribute("timestamp", timestamp);
+
+        return "index";
+    }
 }

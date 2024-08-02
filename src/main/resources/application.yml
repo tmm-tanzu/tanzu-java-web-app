@@ -9,3 +9,8 @@ management:
   endpoint:
     health:
       show-details: always
+cloud:
+  aws:
+    instance:
+      data:
+        enabled: true
