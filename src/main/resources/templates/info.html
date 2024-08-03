@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Tanzu Java Web Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" media="all" href="/style.css"/>
+</head>
+
+<body class="info">
+
+<h1>Tanzu Web Application</h1>
+
+<h2>General Info</h2>
+<table class="general-info">
+    <tr>
+        <td class="name">Timestamp:</td>
+        <td class="value" th:text="${#temporals.format(info.now, 'h:mm:ss a v')}">Now</td>
+    </tr>
+    <tr>
+        <td class="name">Public IP:</td>
+        <td class="value" th:text="${info.publicIp}">Public IP</td>
+    </tr>
+</table>
+
+<h2>Cloud Info</h2>
+<table class="cloud-info">
+    <tr>
+        <td class="name">Availability Zone:</td>
+        <td class="value" th:text="${cloudInfo.availabilityZone}">Availability Zone</td>
+    </tr>
+    <tr>
+        <td class="name">Hostname:</td>
+        <td class="value" th:text="${cloudInfo.hostname}">Hostname</td>
+    </tr>
+    <tr>
+        <td class="name">MAC Address:</td>
+        <td class="value" th:text="${cloudInfo.macAddress}">MAC Address</td>
+    </tr>
+</table>
+
+<h2>Service Binding Info</h2>
+<span th:if="${#lists.isEmpty(bindings.bindings)}">None</span>
+<table class="service-binding-info" th:unless="${#lists.isEmpty(bindings.bindings)}">
+    <tr>
+        <th class="name">Name</th>
+        <th class="type">Type</th>
+        <th class="provider">Provider</th>
+    </tr>
+    <tr th:each="binding: ${bindings.bindings}">
+        <td class="name" th:text="${binding.name}">Name</td>
+        <td class="type" th:text="${binding.type}">Type</td>
+        <td class="provider" th:text="${binding.provider}">Type</td>
+    </tr>
+</table>
+
+<h2>Actions</h2>
+<div class="actions">
+    <form action="/break" method="post">
+        <input type="submit" name="down" value="Break"/>
+    </form>
+    <form action="/exit" method="post">
+        <input type="submit" name="down" value="Exit"/>
+    </form>
+</div>
+
+</body>
+</html>
