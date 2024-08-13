@@ -38,8 +38,7 @@ public class TanzuJavaWebApplication {
                 .onErrorResume(t -> {
                     logger.warn("Unable to retrieve cloud metadata", t);
                     return Mono.just(CloudInfo.UNKNOWN);
-                })
-                .cache();
+                });
     }
 
     @Bean
@@ -50,7 +49,6 @@ public class TanzuJavaWebApplication {
                 .onErrorResume(t -> {
                     logger.warn("Unable to retrieve public IP", t);
                     return Mono.just(Info.UNKNOWN);
-                })
-                .cache();
+                });
     }
 }
