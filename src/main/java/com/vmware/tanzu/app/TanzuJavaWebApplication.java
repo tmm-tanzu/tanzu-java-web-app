@@ -2,6 +2,7 @@ package com.vmware.tanzu.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.bindings.Bindings;
@@ -42,8 +43,8 @@ public class TanzuJavaWebApplication {
     }
 
     @Bean
-    Mono<Info> info() {
-        return WebClient.create("https://api.ipify.org")
+    Mono<Info> info(@Value("${public.ip.endpoint:https://api.ipify.org}") String endpoint) {
+        return WebClient.create(endpoint)
                 .get().retrieve().bodyToMono(String.class)
                 .map(Info::new)
                 .onErrorResume(t -> {
