@@ -40,17 +40,17 @@
 </table>
 
 <h2>Service Binding Info</h2>
-<span th:if="${#lists.isEmpty(bindings.bindings)}">None</span>
-<table class="service-binding-info" th:unless="${#lists.isEmpty(bindings.bindings)}">
+<span th:if="${#lists.isEmpty(serviceBindingInfos)}">None</span>
+<table class="service-binding-info" th:unless="${#lists.isEmpty(serviceBindingInfos)}">
     <tr>
         <th class="name">Name</th>
         <th class="type">Type</th>
         <th class="provider">Provider</th>
     </tr>
-    <tr th:each="binding: ${bindings.bindings}">
-        <td class="name" th:text="${binding.name}">Name</td>
-        <td class="type" th:text="${binding.type}">Type</td>
-        <td class="provider" th:text="${binding.provider}">Type</td>
+    <tr th:each="serviceBindingInfo: ${serviceBindingInfos}">
+        <td class="name" th:text="${serviceBindingInfo.name}">Name</td>
+        <td class="type" th:text="${serviceBindingInfo.type}">Type</td>
+        <td class="provider" th:text="${serviceBindingInfo.provider}">Type</td>
     </tr>
 </table>
 
