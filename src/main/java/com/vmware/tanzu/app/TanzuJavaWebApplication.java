@@ -45,7 +45,7 @@ public class TanzuJavaWebApplication {
                 .doFinally(t -> client.close())
                 .map(CloudInfo::new)
                 .onErrorResume(t -> {
-                    logger.warn("Unable to retrieve cloud metadata", t);
+                    logger.warn("Unable to retrieve cloud metadata");
                     return Mono.just(CloudInfo.UNKNOWN);
                 });
     }
@@ -56,7 +56,7 @@ public class TanzuJavaWebApplication {
                 .get().retrieve().bodyToMono(String.class)
                 .map(Info::new)
                 .onErrorResume(t -> {
-                    logger.warn("Unable to retrieve public IP", t);
+                    logger.warn("Unable to retrieve public IP");
                     return Mono.just(Info.UNKNOWN);
                 });
     }

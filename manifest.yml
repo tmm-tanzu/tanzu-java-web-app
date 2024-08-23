@@ -1,0 +1,23 @@
+---
+version: 1
+applications:
+- name: tanzu-java-web-app
+  path: build/libs/tanzu-java-web-app-1.0.0.jar
+  buildpacks:
+  - java_buildpack_offline
+
+  random-route: true
+  memory: 640M
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{jre: {version: 21.+ },memory_calculator: {stack_threads: 50}}'
+    JAVA_OPTS: >-
+      -XX:MaxDirectMemorySize=128M
+      -Dmanagement.endpoint.health.probes.add-additional-paths=true
+      -Dmanagement.health.probes.enabled=true
+
+  health-check-type: http
+  health-check-http-endpoint: /livez
+  health-check-interval: 3
+  readiness-health-check-type: http
+  readiness-health-check-http-endpoint: /readyz
+  readiness-health-check-interval: 3
