@@ -56,10 +56,10 @@
 
 <h2>Actions</h2>
 <div class="actions">
-    <form action="/break" method="post">
+    <form th:action="@{/break}" method="post">
         <input type="submit" name="down" value="Break"/>
     </form>
-    <form action="/exit" method="post">
+    <form th:action="@{/exit}" method="post">
         <input type="submit" name="down" value="Exit"/>
     </form>
 </div>
