@@ -7,3 +7,14 @@ updates:
     interval: daily
   labels:
   - dependencies
+  ignore:
+  - dependency-name: software.amazon.awssdk:bom
+
+- package-ecosystem: gradle
+  directory: /
+  schedule:
+    interval: weekly
+  labels:
+  - dependencies
+  allow:
+  - dependency-name: software.amazon.awssdk:bom
