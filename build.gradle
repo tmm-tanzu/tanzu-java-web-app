@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-	implementation(platform('software.amazon.awssdk:bom:2.29.25'))
+	implementation(platform('software.amazon.awssdk:bom:2.29.29'))
 
 	implementation 'io.pivotal.cfenv:java-cfenv-boot:3.3.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
