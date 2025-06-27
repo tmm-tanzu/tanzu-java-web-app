@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.bindings.Bindings;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,6 +17,7 @@ import software.amazon.awssdk.imds.Ec2MetadataAsyncClient;
 import java.util.List;
 
 @SpringBootApplication
+@EnableScheduling
 public class TanzuJavaWebApplication {
 
     private final Logger logger = LoggerFactory.getLogger(TanzuJavaWebApplication.class);
