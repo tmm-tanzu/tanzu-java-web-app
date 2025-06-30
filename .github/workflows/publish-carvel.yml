@@ -37,4 +37,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Package and Package Repository
-        run: make package package-repository manifests
+        run: make package package-repository
+
+      - name: Kubernetes Manifests
+        run: make manifests
