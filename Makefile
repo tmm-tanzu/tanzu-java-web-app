@@ -1,13 +1,3 @@
-# Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
-ifeq (,$(shell go env GOBIN))
-GOBIN=$(shell go env GOPATH)/bin
-else
-GOBIN=$(shell go env GOBIN)
-endif
-
-# Tools
-KCTRL ?= go run -modfile hack/kctrl/go.mod carvel.dev/kapp-controller/cli/cmd/kctrl
-
 # Setting SHELL to bash allows bash commands to be executed by recipes.
 # Options are set to exit when a recipe line exits non-zero or a piped command fails.
 SHELL = /usr/bin/env bash -o pipefail
@@ -32,22 +22,18 @@ help: ## Display this help
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	rm -rf carvel-artifacts
+	rm -rf carvel-artifacts/ repository/packages/ repository/package-repository.yml
 
 ##@ Artifacts
 
 .PHONY: manifests
 manifests: ## Print Kubernetes manifests
-	@cat <(echo "---") carvel-artifacts/package-repository.yml hack/kubernetes/*.yml
+	@cat <(echo "---") repository/package-repository.yml carvel/*.yml
 
 .PHONY: package
 package: ## Release Carvel Package
-	$(KCTRL) package release --yes
+	kctrl package release --repo-output repository --yes
 
 .PHONY: package-repository
-package-repository: carvel-artifacts/pkgrepo-build.yml ## Release Carvel Package Repository
-	$(KCTRL) package repository release --chdir carvel-artifacts --yes
-
-carvel-artifacts/pkgrepo-build.yml: pkgrepo-build.yml
-	@mkdir -p $(@D)
-	@cp $< $@
+package-repository: ## Release Carvel Package Repository
+	kctrl package repository release --chdir repository --yes
