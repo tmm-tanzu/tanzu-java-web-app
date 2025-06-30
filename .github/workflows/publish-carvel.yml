@@ -1,11 +1,11 @@
-name: Create and Publish Carvel Artifacts
+name: Publish Carvel Artifacts
 
 on:
   push:
     branches: [main]
 
 jobs:
-  build-and-push-image:
+  publish:
     runs-on: ubuntu-latest
 
     permissions:
