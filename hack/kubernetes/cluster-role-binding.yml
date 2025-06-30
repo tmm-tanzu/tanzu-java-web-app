@@ -1,0 +1,13 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tanzu-java-web-app-installer
+subjects:
+- kind: ServiceAccount
+  name: tanzu-java-web-app-installer
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tanzu-java-web-app-installer

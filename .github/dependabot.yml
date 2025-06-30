@@ -1,10 +1,30 @@
 version: 2
 updates:
 
-- package-ecosystem: gradle
+- package-ecosystem: github-actions
   directory: /
   schedule:
     interval: weekly
   labels:
   - dependencies
 
+- package-ecosystem: gomod
+  directory: /
+  schedule:
+    interval: weekly
+  labels:
+  - dependencies
+
+- package-ecosystem: gomod
+  directory: /hack/kctrl
+  schedule:
+    interval: weekly
+  labels:
+  - dependencies
+
+- package-ecosystem: gradle
+  directory: /
+  schedule:
+    interval: weekly
+  labels:
+  - dependencies

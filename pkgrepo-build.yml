@@ -1,0 +1,8 @@
+apiVersion: kctrl.carvel.dev/v1alpha1
+kind: PackageRepositoryBuild
+metadata:
+  name: tanzu-java-web-app.tanzu.vmware.com
+spec:
+  export:
+    imgpkgBundle:
+      image: ghcr.io/tmm-tanzu/tanzu-java-web-app-repository

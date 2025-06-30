@@ -38,3 +38,6 @@ out/
 
 ### App Advisor ###
 .advisor/
+
+### Carvel ###
+carvel-artifacts/

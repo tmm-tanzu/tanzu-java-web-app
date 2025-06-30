@@ -1,0 +1,52 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: tanzu-java-web-app.tanzu.vmware.com.0.0.0
+spec:
+  refName: tanzu-java-web-app.tanzu.vmware.com
+  releasedAt: null
+  template:
+    spec:
+      deploy:
+      - kapp: {}
+      fetch:
+      - git: {}
+      template:
+      - ytt:
+          paths:
+          - config
+      - kbld: {}
+  valuesSchema:
+    openAPIv3: null
+  version: 0.0.0
+
+---
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  creationTimestamp: null
+  name: tanzu-java-web-app.tanzu.vmware.com
+spec:
+  displayName: tanzu-java-web-app
+  longDescription: tanzu-java-web-app.tanzu.vmware.com
+  shortDescription: tanzu-java-web-app.tanzu.vmware.com
+
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  annotations:
+    kctrl.carvel.dev/local-fetch-0: .
+  creationTimestamp: null
+  name: tanzu-java-web-app
+spec:
+  packageRef:
+    refName: tanzu-java-web-app.tanzu.vmware.com
+    versionSelection:
+      constraints: 0.0.0
+  serviceAccountName: tanzu-java-web-app-sa
+status:
+  conditions: null
+  friendlyDescription: ""
+  observedGeneration: 0

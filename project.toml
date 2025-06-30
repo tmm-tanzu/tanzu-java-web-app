@@ -1,0 +1,9 @@
+[_]
+schema-version = '0.2'
+id = 'com.vmware.tanzu.tanzu-java-web-app'
+name = 'Tanzu Java Web App'
+version = '1.0.0'
+
+[[io.buildpacks.build.env]]
+name = 'BP_OCI_SOURCE'
+value = 'https://github.com/tmm-tanzu/tanzu-java-web-app'
