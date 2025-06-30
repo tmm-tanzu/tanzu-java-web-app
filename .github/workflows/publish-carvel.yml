@@ -24,10 +24,8 @@ jobs:
 
       - name: Setup pack CLI
         run: |
-          curl -sSL https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz \
+          gh release download -R buildpacks/pack --pattern 'pack-v*-linux.tgz' --output - \
           | tar -xzv -C /usr/local/bin pack
-        env:
-          PACK_VERSION: v0.38.2
 
       - name: Log in to the container registry
         uses: docker/login-action@v3
