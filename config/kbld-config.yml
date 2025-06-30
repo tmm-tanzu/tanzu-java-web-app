@@ -1,0 +1,12 @@
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+sources:
+- image: tanzu-java-web-app
+  path: .
+  pack:
+    build:
+      builder: paketobuildpacks/builder-jammy-tiny
+destinations:
+- image: tanzu-java-web-app
+  newImage: ghcr.io/tmm-tanzu/tanzu-java-web-app

@@ -1,0 +1,12 @@
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: tanzu-java-web-app.tanzu.vmware.com
+spec:
+  packageRef:
+    refName: tanzu-java-web-app.tanzu.vmware.com
+    versionSelection:
+      constraints: ">=0.0.0"
+      prereleases: {}
+  serviceAccountName: tanzu-java-web-app-installer
