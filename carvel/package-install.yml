@@ -9,4 +9,7 @@ spec:
     versionSelection:
       constraints: ">=0.0.0"
       prereleases: {}
+  values:
+  - secretRef:
+      name: tanzu-java-web-app-values
   serviceAccountName: tanzu-java-web-app-installer
