@@ -16,4 +16,21 @@ spec:
       - name: tanzu-java-web-app
         image: tanzu-java-web-app
         ports:
-        - containerPort: 8080
+        - name: http
+          containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /livez
+            port: http
+          failureThreshold: 10
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: http
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: http
+          periodSeconds: 3
