@@ -9,10 +9,10 @@ applications:
   random-route: true
   memory: 640M
   env:
-    JBP_CONFIG_OPEN_JDK_JRE: '{jre: {version: 21.+ },memory_calculator: {stack_threads: 50}}'
+    JBP_CONFIG_OPEN_JDK_JRE: '{jre: {version: 21.+}, memory_calculator: {stack_threads: 50}}'
     JAVA_OPTS: >-
       -XX:MaxDirectMemorySize=128M
-      -Dspring.profiles.active=cloud-foundry,tanzu-hub
+      -Dspring.profiles.active=tanzu-hub
 
   health-check-type: http
   health-check-http-endpoint: /livez
