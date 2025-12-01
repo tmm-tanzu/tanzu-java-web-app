@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
 	implementation(platform('com.wavefront:wavefront-spring-boot-bom:3.2.0'))
-	implementation(platform('software.amazon.awssdk:bom:2.39.4'))
+	implementation(platform('software.amazon.awssdk:bom:2.39.6'))
 
 	implementation 'com.wavefront:wavefront-spring-boot-starter'
 	implementation 'io.micrometer:micrometer-tracing-bridge-brave'
