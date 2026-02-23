@@ -28,7 +28,7 @@ dependencies {
 
 	implementation 'com.wavefront:wavefront-spring-boot-starter'
 	implementation 'io.micrometer:micrometer-tracing-bridge-brave'
-	implementation 'io.pivotal.cfenv:java-cfenv-boot:3.5.1'
+	implementation 'io.pivotal.cfenv:java-cfenv-boot:4.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
